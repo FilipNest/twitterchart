@@ -4,7 +4,6 @@ var util = require('util'),
     twitter = require('twitter');
 
 var auth = require('./auth.js');
-console.log(auth);
 var twit = new twitter({
     consumer_key: auth.key,
     consumer_secret: auth.secret,
@@ -12,7 +11,7 @@ var twit = new twitter({
     access_token_secret: auth.token_secret
 });
 
-var species = ["tiger","wolf","penguin","meerkat","dog","fish"];
+var species = ["tiger","wolf","penguin","spider"];
 var ranking = {};
 var i;
 var connection;
@@ -49,7 +48,7 @@ console.log(species[i] +": "+ranking[species[i]].points);
 }
         
 if(connection){
-  connection.emit('news', { ranking: ranking });
+  connection.emit('news', { ranking: ranking, tweet:tweet });
 }
 });
  
